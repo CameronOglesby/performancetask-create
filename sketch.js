@@ -1,20 +1,28 @@
 var player;
-
 var players = [];
 var zoom = 1;
+var img;
+
+function preload() {
+  img = loadImage("libraries/images/background.jpg");
+}
 
 function setup() {
-  createCanvas(600, 600);
-  player = new Player(0, 0, 64);
-  for (var i = 0; i < 200; i++) {
+  createCanvas(3888, 2592);
+  player = new Player(0, 0, 20);
+  for (var i = 0; i < 85; i++) {
     var x = random(-width,width);
     var y = random(-height,height);
     players[i] = new Player(x, y, 16);
   }
 }
 
+//function windowResized() {
+  //resizeCanvas(windowWidth, windowHeight);
+//}
+
 function draw() {
-  background(0);
+  background(img);
 
   translate(width/2, height/2);
   var newzoom = 64 / player.r;

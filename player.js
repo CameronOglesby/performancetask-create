@@ -5,7 +5,7 @@ function Player(x, y, r) {
 
   this.update = function() {
     var newvel = createVector(mouseX-width/2, mouseY-height/2);
-    newvel.setMag(3);
+    newvel.setMag(2.5);
     this.vel.lerp(newvel, 0.2);
     this.pos.add(this.vel);
   }
@@ -13,10 +13,12 @@ function Player(x, y, r) {
   this.eats = function(other) {
     var d = p5.Vector.dist(this.pos, other.pos);
     if (d < this.r + other.r) {
+      if (this.r >= other.r) {
       var sum = PI * this.r * this.r + PI * other.r * other.r;
-      this.r = sqrt(sum / PI);
+      return this.r = sqrt(sum / PI);
       //this.r += other.r;
       return true;
+      }
     } else {
       return false;
     }
